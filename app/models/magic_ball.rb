@@ -1,0 +1,2 @@
+class MagicBall < ApplicationRecord
+end
