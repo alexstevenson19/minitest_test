@@ -7,7 +7,7 @@ class MagicBallTest < ActiveSupport::TestCase
 
   test "ask returns an answer" do
   	magic_ball = MagicBall.new
-  	assert_includes MagicBall::ANSWERS, magic_ball.ask("Whatever")
+  	assert_includes MagicBall::ANSWERS, magic_ball.ask("Is MiniTest better than RSpec?")
   	# assert magic_ball.ask("Whatever") != nil
 	end
 
@@ -17,5 +17,13 @@ class MagicBallTest < ActiveSupport::TestCase
 
 	test "predefined answers is not empty" do
 		refute_empty MagicBall::ANSWERS
+	end
+
+	# writing test in the method style
+	def test_raises_error_when_question_is_number
+		assert_raises "Question has invalid format." do
+			magic_ball = MagicBall.new
+			magic_ball.ask(1)
+		end
 	end
 end
